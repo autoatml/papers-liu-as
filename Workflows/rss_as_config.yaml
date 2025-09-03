@@ -1,0 +1,159 @@
+# General Parameters
+tag: 'As'
+train_from_scratch: true
+resume_from_previous_state:
+  test_error: 
+  pre_database_dir: 
+  mlip_path: 
+  isolated_atom_energies: 
+
+# Buildcell Parameters
+generated_struct_numbers:
+  - 8000
+  - 2000
+buildcell_options:
+  - NFORM: '1'
+    SLACK: 0.25
+    OVERLAP: 0.1
+    NATOM: '{6,8,10,12,14,16,18,20,22,24}'
+    TARGVOL: '25-30'
+    MINSEP: 1.9
+  - NFORM: '1'
+    SYMMOPS: '2-8'
+    SLACK: 0.25
+    OVERLAP: 0.1
+    NATOM: '{6,8,10,12,14,16,18,20,22,24}'
+    TARGVOL: '25-30'
+    MINSEP: 1.9
+fragment_file: null
+fragment_numbers: null
+num_processes_buildcell: 128
+
+# Sampling Parameters
+num_of_initial_selected_structs:
+  - 80
+  - 20
+num_of_rss_selected_structs: 100
+initial_selection_enabled: true
+rss_selection_method: 'bcur2i'
+bcur_params:
+  soap_paras:
+    l_max: 12
+    n_max: 12
+    atom_sigma: 0.0875
+    cutoff: 10.5
+    cutoff_transition_width: 1.0
+    zeta: 4.0
+    average: true
+    species: true
+  frac_of_bcur: 0.8
+  bolt_max_num: 3000
+random_seed: null
+
+# DFT Labelling Parameters
+include_isolated_atom: true
+isolatedatom_box:
+  - 20.0
+  - 20.0
+  - 20.0
+e0_spin: false
+include_dimer: false
+dimer_box:
+  - 20.0
+  - 20.0
+  - 20.0
+dimer_range:
+  - 1.0
+  - 5.0
+dimer_num: 21
+custom_incar:
+  KPAR: 2
+  NCORE: 16
+  ISMEAR: 0
+  SIGMA: 0.01
+  PREC: "Accurate"
+  ADDGRID: ".TRUE."
+  EDIFF: 1E-7
+  NELM: 250
+  LWAVE: ".FALSE."
+  LCHARG: ".FALSE."
+  ALGO: "All"
+  LREAL: "Auto"
+  ISYM: 0
+  ENCUT: 600.0
+  KSPACING: 0.2
+  METAGGA: "R2SCAN"
+  LASPH: '.TRUE.'
+  LMIXTAU: ".TRUE."
+custom_potcar:
+#Ti: 'Ti'
+vasp_ref_file: 'vasp_ref.extxyz'
+
+# Data Preprocessing Parameters
+config_types:
+  - 'initial'
+  - 'traj_early'
+  - 'traj'
+rss_group:
+  - 'traj'
+test_ratio: 0.1
+regularization: true
+scheme: 'linear-hull'
+retain_existing_sigma: true
+reg_minmax:
+  - [0.1, 1]
+  - [0.001, 0.1]
+  - [0.0316, 0.316]
+  - [0.0632, 0.632]
+distillation: ture
+force_max: 100
+force_label: REF_forces
+pre_database_dir: null
+
+# MLIP Parameters
+mlip_type: 'GAP'
+ref_energy_name: 'REF_energy'
+ref_force_name: 'REF_forces'
+ref_virial_name: 'REF_virial'
+auto_delta: true
+num_processes_fit: 32
+device_for_fitting: 'cpu'
+twob:
+  cutoff: 5.0
+  n_sparse: 15
+  theta_uniform: 2.5
+  delta: 2.0
+soap:
+  l_max: 6
+  n_max: 12
+  atom_sigma: 0.5
+  n_sparse: 3000
+  cutoff: 5.0
+  delta: 0.2
+  cutoff_transition_width: 1.0
+  central_weight: 1.0
+  radial_scaling: -0.5 
+general:
+  three_body: false
+
+# RSS Exploration Parameters
+scalar_pressure_method: 'exp'
+scalar_exp_pressure: 10
+scalar_pressure_exponential_width: 0.2
+scalar_pressure_low: 0
+scalar_pressure_high: 20
+max_steps: 300
+force_tol: 0.01
+stress_tol: 0.01
+stop_criterion: 0.001
+max_iteration_number: 15
+num_groups: 7
+initial_kt: 0.3
+current_iter_index: 1
+hookean_repul: True
+hookean_paras:
+  '(33, 33)': [100, 1.5]
+keep_symmetry: false
+write_traj: true
+num_processes_rss: 128
+device_for_rss: 'cpu'

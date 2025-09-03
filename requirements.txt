@@ -1,0 +1,9 @@
+matplotlib==3.9.2
+numpy==1.26.4
+ase==3.23.0
+autoplex==0.0.7
+pandas==2.2.3
+ovito==3.12.0
+scipy==1.14.1
+notebook==6.5.7
+graph-pes==0.0.25

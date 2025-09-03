@@ -1,0 +1,5 @@
+filename,avg_void_radius,pressure
+structure_0GPa_LDA.xyz,7.542,0
+structure_1.38GPa.xyz,5.841,1.38
+structure_3.61GPa.xyz,3.846,3.61
+structure_6.3GPa_HDA.xyz,1.831,6.3

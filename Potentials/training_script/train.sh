@@ -1,0 +1,32 @@
+#!/bin/bash 
+
+mace_run_train \
+    --name="MACE_model" \
+    --train_file="train_stress.xyz" \
+    --valid_file="valid_stress.xyz" \
+    --test_file="test_stress.xyz" \
+    --config_type_weights="{"Default":1.0}" \
+    --model="MACE" \
+    --energy_key="REF_energy" \
+    --forces_key="REF_forces" \
+    --stress_key="REF_stress" \
+    --hidden_irreps="128x0e + 128x1o" \
+    --r_max=6.0 \
+    --batch_size=16 \
+    --max_num_epochs=2000 \
+    --scheduler_patience=15 \
+    --patience=30 \
+    --eval_interval=4 \
+    --ema \
+    --ema_decay=0.99 \
+    --swa \
+    --start_swa=1200 \
+    --default_dtype="float64"\
+    --amsgrad \
+    --error_table="PerAtomMAE" \
+    --loss="huber" \
+    --device=cuda \
+    --restart_latest \
+    --enable_cueq=True \
+    --wandb \
+    --wandb_name="mace_fit" \
