@@ -17,7 +17,9 @@ This repository contains raw data, plotting scripts, and workflow configurations
 3. `Potentials/`: Resources related to the training of machine-learned interatomic potentials, including:
    - `dataset/`: Reference DFT data used for training, validation, and testing.  
    - `models/`: Trained potential models.  
-   - `training_script/`: Scripts and configurations for reproducing the training workflow.  
+   - `training_script/`: Scripts and configurations for reproducing the training workflow.
+4. `Structures/`: Structural data of amorphous arsenic obtained from different functionals.
+    Note: Amorphous phosphorus structures are referenced from the [literature](https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/adma.202107515).  
 
 **Note**: Additional data on chemical bonding will be made available via [Zenodo]() upon acceptance. 
 
